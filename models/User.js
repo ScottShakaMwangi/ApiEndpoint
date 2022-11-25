@@ -13,4 +13,4 @@ isAddmin:{
 {timestamps: true}
 );
 
-module.ex = mongoose.model("User",UserSchema);
+module.exports = mongoose.model("User",UserSchema);

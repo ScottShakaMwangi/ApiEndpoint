@@ -5,7 +5,7 @@ const verifyToken = (req,res,next) => {
     if(authHeader){
         const token = authHeader.split(" ")[1];
         jwt.verify(token,process.env.JWT_SEC, (err,user) => {
-            if(err) res.status(401).json("Token is not Valid!");
+            if(err) res.status(403).json("Token is not Valid!");
             req.user = user;
             next();
         })
@@ -34,4 +34,8 @@ const verifyTokenAndAdmin = (req,res,next)=>{
     });
 };
 
-module.exports = {verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin};
+module.exports = {
+    verifyToken, 
+    verifyTokenAndAuthorization, 
+    verifyTokenAndAdmin
+};

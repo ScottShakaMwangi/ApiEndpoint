@@ -1,11 +1,12 @@
-const Product = require("../models/Product");
-const { 
-    verifyToken,
-    verifyTokenAndAuthorization, 
-    verifyTokenAndAdmin, 
+const Cart = require("../models/Cart");
+const {
+  verifyToken,
+  verifyTokenAndAuthorization,
+  verifyTokenAndAdmin,
 } = require("./verifyToken");
 
 const router = require("express").Router();
+
 
 //CREATE
 
@@ -57,9 +58,7 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
     }
   });
   
-
 // //GET ALL
-
 router.get("/", verifyTokenAndAdmin, async (req, res) => {
     try {
       const carts = await Cart.find();
@@ -68,8 +67,5 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
       res.status(500).json(err);
     }
   });
-
-
-
 
 module.exports = router;
